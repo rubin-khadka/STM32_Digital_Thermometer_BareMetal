@@ -40,54 +40,58 @@ static const uint8_t digit_patterns_with_dp[10] = {
 
 void Temperature_To_Digit(float temperature, DisplayDigits_t *digits)
 {
-    if (temperature < 0.0f)
-    {
-        digits->digit1 = DIGIT_MINUS;
-        temperature = -temperature;
-    }
-    else
-    {
-        digits->digit1 = DIGIT_BLANK;
-    }
-    
-    // Multiply by 10 to eliminate the decimal point
-    int temp_x10 = (int)(temperature * 10.0f);
-    
-    // Extract digits from integers with explicit casting
-    int tens_digit = temp_x10 / 100;           
-    int ones_digit = (temp_x10 / 10) % 10;    
-    int tenths_digit = temp_x10 % 10;
-    
-    digits->digit2 = (uint8_t)tens_digit;
-    digits->digit3 = (uint8_t)ones_digit;
-    digits->digit4 = (uint8_t)tenths_digit;
+	int temp_x10;
+	int tens_digit, ones_digit, tenths_digit;
+	if (temperature < 0.0f)
+	{
+			digits->digit1 = DIGIT_MINUS;
+			temperature = -temperature;
+	}
+	else
+	{
+			digits->digit1 = DIGIT_BLANK;
+	}
+	
+	// Multiply by 10 to eliminate the decimal point
+	temp_x10 = (int)(temperature * 10.0f);
+	
+	// Extract digits from integers with explicit casting
+	tens_digit = temp_x10 / 100;           
+	ones_digit = (temp_x10 / 10) % 10;    
+	tenths_digit = temp_x10 % 10;
+	
+	digits->digit2 = (uint8_t)tens_digit;
+	digits->digit3 = (uint8_t)ones_digit;
+	digits->digit4 = (uint8_t)tenths_digit;
 }
 
 void Update_Display(const DisplayDigits_t *digits)
 {
+	uint16_t data1, data2, data3, data4;
+	
 	// Display Digit 1
-	uint16_t data1 = DIGIT_1 | digit_patterns[digits->digit1];
+	data1 = DIGIT_1 | digit_patterns[digits->digit1];
 	LATCH(0);
 	SPI1_Transmit16(data1);
 	LATCH(1);
 	TIMER1_Delay_ms(3);
 	
 	// Display Digit 2 
-	uint16_t data2 = DIGIT_2 | digit_patterns[digits->digit2];
+	data2 = DIGIT_2 | digit_patterns[digits->digit2];
 	LATCH(0);
 	SPI1_Transmit16(data2);
 	LATCH(1);
 	TIMER1_Delay_ms(3);
 	
 	// Display Digit 3 with decimal point
-	uint16_t data3 = DIGIT_3 | digit_patterns_with_dp[digits->digit3];
+	data3 = DIGIT_3 | digit_patterns_with_dp[digits->digit3];
 	LATCH(0);
 	SPI1_Transmit16(data3);
 	LATCH(1);
 	TIMER1_Delay_ms(3);
 	
 	// Display Digit 4
-	uint16_t data4 = DIGIT_4 | digit_patterns[digits->digit4];
+	data4 = DIGIT_4 | digit_patterns[digits->digit4];
 	LATCH(0);
 	SPI1_Transmit16(data4);
 	LATCH(1);

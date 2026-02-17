@@ -7,6 +7,8 @@
 #ifndef SEVEN_SEGMENT_H
 #define SEVEN_SEGMENT_H
 
+#include "stdint.h"
+
 // Digit Control Masks (Bits 15-8 of 16-bit SPI data)
 #define DIGIT_1  0xFE00  // 1111 1110 0000 0000 
 #define DIGIT_2  0xFD00  // 1111 1101 0000 0000
