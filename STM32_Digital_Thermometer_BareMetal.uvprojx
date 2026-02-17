@@ -330,7 +330,7 @@
             <uGnu>1</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
-            <v6LangP>1</v6LangP>
+            <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -404,6 +404,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>seven_segment.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\seven_segment.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\spi.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -424,6 +434,16 @@
               <FileType>5</FileType>
               <FilePath>.\inc\gpio.h</FilePath>
             </File>
+            <File>
+              <FileName>seven_segment.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\seven_segment.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -436,23 +456,13 @@
             </File>
           </Files>
         </Group>
-        <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
       </Groups>
     </Target>
   </Targets>
 
   <RTE>
     <apis/>
-    <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.6.0" condition="ARMv6_7_8-M Device">
-        <package name="CMSIS" schemaVersion="1.7.7" url="http://www.keil.com/pack/" vendor="ARM" version="5.9.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
-        </targetInfos>
-      </component>
-    </components>
+    <components/>
     <files>
       <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h" version="1.1.2">
         <instance index="0" removed="1">RTE\Device\STM32F103C8\RTE_Device.h</instance>
