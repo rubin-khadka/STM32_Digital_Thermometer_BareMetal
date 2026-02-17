@@ -4,7 +4,7 @@
   * @author  Rubin Khadka
   */
 	
-#include "stm32f10x.h"                  // Device header
+#include "stm32f10x.h"  // Device header
 #include "adc.h"
 
 /* Global Variables */
@@ -26,12 +26,12 @@ void ADC_Init(void)
 	ADC1->CR2 |= ADC_CR2_ADON;
 	
 	// Configure Sampling time for Channel 0
-	ADC1->SMPR2 &= ~(0x07UL << 0);									// Clear existing sampling cycle
-	ADC1->SMPR2 |= (TEMP_ADC_SAMPLING_TIME << 0);		// Set sampling cycle 28.5 
+	ADC1->SMPR2 &= ~(0x07UL << 0);	// Clear existing sampling cycle
+	ADC1->SMPR2 |= (TEMP_ADC_SAMPLING_TIME << 0);	// Set sampling cycle 28.5 
 	
 	// Configure conversion sequence 
-	ADC1->SQR1 &= ~(0x0FUL << 20);   	// 1 conversion in sequence
-	ADC1->SQR3 = TEMP_ADC_CHANNEL;  	// SQ1[4:0] = Channel 0
+	ADC1->SQR1 &= ~(0x0FUL << 20);	// 1 conversion in sequence
+	ADC1->SQR3 = TEMP_ADC_CHANNEL;	// SQ1[4:0] = Channel 0
 	
 	// ADC calibration 
 	ADC1->CR2 |= ADC_CR2_RSTCAL;

@@ -1,6 +1,6 @@
 /**
   * @file    adc.h
-  * @brief   ADC module initialization 
+  * @brief   ADC module initialization header file
   * @author  Rubin Khadka
   */
 	
@@ -10,13 +10,13 @@
 #include "stdint.h"
 
 /* Defines */
-#define TEMP_ADC_CHANNEL 				0x00		// ADC Channel 0 (PA0)
-#define TEMP_ADC_SAMPLING_TIME 	0x03		// 28.5 sampling cycle
+#define TEMP_ADC_CHANNEL  0x00  // ADC Channel 0 (PA0)
+#define TEMP_ADC_SAMPLING_TIME 	0x03  // 28.5 sampling cycle
 
 // Temperature calculation
-#define VREF    								3.3f 		// 3.3V reference in mV
-#define ADC_RESOLUTION      		4096.0f // 12-bit ADC
-#define LM35_SCALE_FACTOR     	100.0f 	// LM35: 10mV/°C = 0.01V/°C × 100
+#define VREF  3.3f  // 3.3V reference in mV
+#define ADC_RESOLUTION  4096.0f  // 12-bit ADC
+#define LM35_SCALE_FACTOR  100.0f  // LM35: 10mV/°C = 0.01V/°C × 100
 
 /* Global Variables */
 extern volatile uint32_t adc_raw_value;
