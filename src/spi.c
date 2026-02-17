@@ -11,16 +11,13 @@ void SPI1_init(void)
 	// Enable peripheral clock
 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_AFIOEN | RCC_APB2ENR_SPI1EN;
 	
+	AFIO->MAPR &= ~AFIO_MAPR_SPI1_REMAP;
+	
 	// Configure pins for connection with shift registers
 	// PA7 MOSI
 	GPIOA->CRL &= ~(GPIO_CRL_CNF7 | GPIO_CRL_MODE7);
 	GPIOA->CRL |= GPIO_CRL_MODE7;
 	GPIOA->CRL |= GPIO_CRL_CNF7_1;
-	
-	// PA6 MISO
-	GPIOA->CRL &= ~(GPIO_CRL_CNF6 | GPIO_CRL_MODE6);
-	GPIOA->CRL |= GPIO_CRL_MODE6;
-	GPIOA->CRL |= GPIO_CRL_CNF6_1;
 	
 	// PA5 SCK
 	GPIOA->CRL &= ~(GPIO_CRL_CNF5 | GPIO_CRL_MODE5);
@@ -30,7 +27,7 @@ void SPI1_init(void)
 	// PA4 GPIO output
 	GPIOA->CRL &= ~(GPIO_CRL_CNF4 | GPIO_CRL_MODE4);
 	GPIOA->CRL |= GPIO_CRL_MODE4;
-	GPIOA->BSRR = GPIO_BSRR_BS4;
+	GPIOA->BSRR |= GPIO_BSRR_BS4;
 	
 	// SPI1 Configurations
 	SPI1->CR1 = 0;
@@ -39,6 +36,7 @@ void SPI1_init(void)
 	SPI1->CR1 |= SPI_CR1_MSTR;
 	
 	// 8MHz/2 = 4MHz, already set bu line 37
+  SPI1->CR1 |= SPI_CR1_BR_1 | SPI_CR1_BR_0; // 500kHz for Proteus
 	
 	// CPOL and CPHA for 74HC595
 	SPI1->CR1 &= ~SPI_CR1_CPOL;	// Clock idle low (0)

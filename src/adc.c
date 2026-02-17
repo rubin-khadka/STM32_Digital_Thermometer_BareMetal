@@ -40,6 +40,9 @@ void ADC_Init(void)
 	ADC1->CR2 |= ADC_CR2_CAL;
 	while (ADC1->CR2 & ADC_CR2_CAL);
 	
+	ADC1->CR2 |= ADC_CR2_EXTSEL;     // Software trigger (111)
+	ADC1->CR2 |= ADC_CR2_EXTTRIG;    // Enable external trigger
+	
 	// Final configuration
 	ADC1->CR2 &= ~ADC_CR2_CONT;  // Single conversion mode
 	ADC1->CR2 &= ~ADC_CR2_ALIGN; // Right alignment

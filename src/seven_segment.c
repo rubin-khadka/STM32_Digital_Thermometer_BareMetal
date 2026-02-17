@@ -25,7 +25,8 @@ static const uint8_t digit_patterns[13] =
 	0x40  // 12: Minus sign - Segment G only
 };
 
-static const uint8_t digit_patterns_with_dp[10] = {
+static const uint8_t digit_patterns_with_dp[10] = 
+{
 	0xBF, // 0 with decimal point
 	0x86, // 1 with decimal point  
 	0xDB, // 2 with decimal point
