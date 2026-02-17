@@ -4,7 +4,10 @@
 DebugConfig/
 Listings/
 Objects/
+Project Backups/
 
 *.scvd
 *.uvoptx
 *.rubin
+
+*.workspace

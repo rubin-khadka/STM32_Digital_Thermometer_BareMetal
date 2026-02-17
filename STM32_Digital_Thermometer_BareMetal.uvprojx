@@ -395,9 +395,14 @@
               <FilePath>.\src\adc.c</FilePath>
             </File>
             <File>
-              <FileName>lm53.c</FileName>
+              <FileName>timer1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\lm53.c</FilePath>
+              <FilePath>.\src\timer1.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\gpio.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -410,9 +415,14 @@
               <FilePath>.\inc\adc.h</FilePath>
             </File>
             <File>
-              <FileName>lm35.h</FileName>
+              <FileName>timer1.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\lm35.h</FilePath>
+              <FilePath>.\inc\timer1.h</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\gpio.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -426,13 +436,23 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
+        </Group>
       </Groups>
     </Target>
   </Targets>
 
   <RTE>
     <apis/>
-    <components/>
+    <components>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.6.0" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.7.7" url="http://www.keil.com/pack/" vendor="ARM" version="5.9.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+    </components>
     <files>
       <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h" version="1.1.2">
         <instance index="0" removed="1">RTE\Device\STM32F103C8\RTE_Device.h</instance>
