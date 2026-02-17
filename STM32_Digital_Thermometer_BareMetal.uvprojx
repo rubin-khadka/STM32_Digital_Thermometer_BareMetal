@@ -387,12 +387,34 @@
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FilePath>.\src\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>lm53.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lm53.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>inc</GroupName>
+          <Files>
+            <File>
+              <FileName>adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>lm35.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\lm35.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Startup</GroupName>
