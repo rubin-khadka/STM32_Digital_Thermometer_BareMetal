@@ -7,12 +7,10 @@
 #ifndef SPI_H
 #define SPI_H
 
-/* Include Definitions */
 #include "stm32f10x.h" // Device header
+#include "stdint.h"
 
-/* Macros */
-#define LATCH(x) (x==1 ? (HAL_GPIO_WritePin(SPI_SS_GPIO_Port, SPI_SS_Pin, GPIO_PIN_SET)):\
-												 (HAL_GPIO_WritePin(SPI_SS_GPIO_Port, SPI_SS_Pin, GPIO_PIN_RESET)))
+#define LATCH(x) ((x) ? (GPIOA->BSRR = GPIO_BSRR_BS4) : (GPIOA->BSRR = GPIO_BSRR_BR4))
 
 /* Function Prototypes */
 void SPI1_init(void);
