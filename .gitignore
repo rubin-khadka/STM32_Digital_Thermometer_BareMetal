@@ -1,0 +1,10 @@
+# STM32 Project - Git Ignore
+
+# STM32CubeIDE Build Outputs
+DebugConfig/
+Listings/
+Objects/
+
+*.scvd
+*.uvoptx
+*.rubin
