@@ -1,6 +1,6 @@
 /**
   * @file    main.c
-  * @brief   Digital Thermometer
+  * @brief   Digital Thermometer project main file
   * @author  Rubin Khadka
   */
 

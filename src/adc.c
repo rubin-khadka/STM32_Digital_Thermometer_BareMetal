@@ -40,7 +40,7 @@ void ADC_Init(void)
 	ADC1->CR2 |= ADC_CR2_CAL;
 	while (ADC1->CR2 & ADC_CR2_CAL);
 	
-	ADC1->CR2 |= ADC_CR2_EXTSEL;     // Software trigger (111)
+	ADC1->CR2 |= ADC_CR2_EXTSEL;     // Software trigger
 	ADC1->CR2 |= ADC_CR2_EXTTRIG;    // Enable external trigger
 	
 	// Final configuration
@@ -78,7 +78,6 @@ float ADC_ReadCelsius(void)
 	temperature = (temperature - 0.1f) * 0.9756f; // Reduce gain by 2.5% to compensate for the offset
   return temperature;
 }
-
 
 void ADC1_2_IRQHandler(void)
 {
