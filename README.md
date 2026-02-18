@@ -7,7 +7,7 @@
 ## Project Overview
 This project implements a digital thermometer based on the **STM32F103C8T6** (Blue Pill) microcontroller, programmed entirely at the register level without HAL or standard peripheral libraries. Temperature data is acquired from an **LM35 analog temperature sensor** and displayed on a **4-digit 7-segment display**.
 
-The display is controlled using two daisy-chained **74HC595 shift registers** over **SPI**, minimizing GPIO usage. The ADC operates in **single-conversion, software-triggered mode**, with conversion results handled via **end-of-conversion interrupts**. A timer provides non-blocking delays and display multiplexing timing.
+The display is controlled using two daisy-chained **74HC595 shift registers** over **SPI**, minimizing GPIO usage. The ADC operates in **single-conversion, software-triggered mode**, with conversion results handled via **end-of-conversion interrupts**. A timer provides delay for display multiplexing.
 
 This project focuses on **bare-metal embedded firmware design**, demonstrating complete control over the microcontroller's peripherals through direct register manipulation.
 
@@ -16,7 +16,7 @@ For a HAL/library-based version of this project, including detailed pin configur
 
 ### Key Features
 - 100% Register-Level Programming - No HAL, no external libraries
-- Non-blocking Timer Architecture - Timer1 provides both delays and periodic interrupts
+- Timer Architecture - Timer1 provides delay for seven segment display
 - Interrupt-Driven ADC - Temperature conversion with zero polling overhead
 - SPI Communication - 4MHz data transfer to daisy-chained 74HC595 shift registers
 - Memory Efficient - Minimal RAM/Flash footprint (see comparison below)
@@ -47,8 +47,8 @@ The system is configured for deterministic timing and minimal resource usage.
 
 - **Timer1**:
     - 100µs per tick (PSC = 799 at 8MHz)
-    - Dual-mode operation: one-shot delays + periodic interrupts
-    - Display refresh every 5ms
+    - Dual-mode operation: one-shot delays 
+    - Display refresh every 3ms
 
 - **SPI1**:
     - Baud Rate: 4 MHz (APB2/2)

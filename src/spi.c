@@ -35,8 +35,7 @@ void SPI1_init(void)
 	SPI1->CR1 |= SPI_CR1_SSI;
 	SPI1->CR1 |= SPI_CR1_MSTR;
 	
-	// 8MHz/2 = 4MHz, already set bu line 37
-  SPI1->CR1 |= SPI_CR1_BR_1 | SPI_CR1_BR_0; // 500kHz for Proteus
+	// 8MHz/2 = 4MHz, already set by line 37
 	
 	// CPOL and CPHA for 74HC595
 	SPI1->CR1 &= ~SPI_CR1_CPOL;	// Clock idle low (0)

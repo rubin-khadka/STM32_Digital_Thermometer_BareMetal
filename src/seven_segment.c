@@ -45,12 +45,12 @@ void Temperature_To_Digit(float temperature, DisplayDigits_t *digits)
 	int tens_digit, ones_digit, tenths_digit;
 	if (temperature < 0.0f)
 	{
-			digits->digit1 = DIGIT_MINUS;
-			temperature = -temperature;
+		digits->digit1 = DIGIT_MINUS;
+		temperature = -temperature;
 	}
 	else
 	{
-			digits->digit1 = DIGIT_BLANK;
+		digits->digit1 = DIGIT_BLANK;
 	}
 	
 	// Multiply by 10 to eliminate the decimal point
