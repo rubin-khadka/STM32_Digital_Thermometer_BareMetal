@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![STM32](https://img.shields.io/badge/STM32-F103C8T6-blue)
-![Keil](https://img.shields.io/badge/IDE-Keil--uVision5-green)
+![Keil](https://img.shields.io/badge/IDE-Keil--uVision5-darkgreen)
 
 ## Project Overview
 This project implements a digital thermometer based on the **STM32F103C8T6** (Blue Pill) microcontroller, programmed entirely at the register level without HAL or standard peripheral libraries. Temperature data is acquired from an **LM35 analog temperature sensor** and displayed on a **4-digit 7-segment display**.
@@ -11,10 +11,10 @@ The display is controlled using two daisy-chained **74HC595 shift registers** ov
 
 This project focuses on **bare-metal embedded firmware design**, demonstrating complete control over the microcontroller's peripherals through direct register manipulation.
 
-For a HAL/library-based version of this project, including detailed pin configuration and schematic:
+For a HAL/library-based version of this project, including detailed pin configuration and schematic:<br>
 🔗 [STM32_Digital_Thermometer](https://github.com/rubin-khadka/STM32_Digital_Thermometer)
 
-## Key Features
+### Key Features
 - 100% Register-Level Programming - No HAL, no external libraries
 - Non-blocking Timer Architecture - Timer1 provides both delays and periodic interrupts
 - Interrupt-Driven ADC - Temperature conversion with zero polling overhead
@@ -22,21 +22,20 @@ For a HAL/library-based version of this project, including detailed pin configur
 - Memory Efficient - Minimal RAM/Flash footprint (see comparison below)
 - Deterministic Timing - Precise control over every microsecond
 
-## Hardware Components
+### Hardware Components
 - MCU: STM32F103C8T6 (Blue Pill) running at 8MHz (HSI)
 - Temperature Sensor: LM35 (10 mV/°C)
 - Display: 4-digit common-cathode 7-segment display
 - Display Driver: 2 × 74HC595 shift registers (daisy-chained)
 - Interface: SPI1 (data) + GPIO (latch control)
 
-## Quick Pin Reference
+### Quick Pin Reference
 | STM32 Pin | Function |
 |-----------|----------|
 | PA0 | LM35 Output |
 | PA4 | 74HC595 Latch (ST_CP) |
 | PA5 | SPI1 SCK |
 | PA7 | SPI1 MOSI |
-| PC13 | LED (optional) |
 
 *For complete schematic and detailed connections, see the [original project](https://github.com/rubin-khadka/STM32_Digital_Thermometer)*
 
