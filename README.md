@@ -11,7 +11,7 @@ The display is controlled using two daisy-chained **74HC595 shift registers** ov
 
 This project focuses on **bare-metal embedded firmware design**, demonstrating complete control over the microcontroller's peripherals through direct register manipulation.
 
-For a HAL/library-based version of this project, check out:
+For a HAL/library-based version of this project, including detailed pin configuration and schematic:
 🔗 [STM32_Digital_Thermometer](https://github.com/rubin-khadka/STM32_Digital_Thermometer)
 
 ## Key Features
@@ -29,23 +29,34 @@ For a HAL/library-based version of this project, check out:
 - Display Driver: 2 × 74HC595 shift registers (daisy-chained)
 - Interface: SPI1 (data) + GPIO (latch control)
 
+## Quick Pin Reference
+| STM32 Pin | Function |
+|-----------|----------|
+| PA0 | LM35 Output |
+| PA4 | 74HC595 Latch (ST_CP) |
+| PA5 | SPI1 SCK |
+| PA7 | SPI1 MOSI |
+| PC13 | LED (optional) |
+
+*For complete schematic and detailed connections, see the [original project](https://github.com/rubin-khadka/STM32_Digital_Thermometer)*
+
 ## System Configuration
 The system is configured for deterministic timing and minimal resource usage.
-- System Clock: 8 MHz (HSI internal oscillator)
+- **System Clock**: 8 MHz (HSI internal oscillator)
     - No PLL, no external crystal required
     - Faster startup, lower power consumption
 
-- Timer1:
+- **Timer1**:
     - 100µs per tick (PSC = 799 at 8MHz)
     - Dual-mode operation: one-shot delays + periodic interrupts
     - Display refresh every 5ms
 
-- SPI1:
+- **SPI1**:
     - Baud Rate: 4 MHz (APB2/2)
     - Mode: Master, CPOL=0, CPHA=0 (first edge capture)
     - 16-bit transfers for daisy-chained shift registers
 
-- ADC1:
+- **ADC1**:
     - Software-triggered, single conversion mode
     - Sampling Time: 28.5 cycles
     - End-of-conversion interrupt
@@ -60,9 +71,11 @@ The system is configured for deterministic timing and minimal resource usage.
 |ZI-data	|6396 bytes	|1648 bytes	|74% smaller|
 |Total	|13.5 KB	|5.7 KB	|58% smaller|
 
-This efficient implementation leaves 94% of Flash and 92% of RAM available for additional features.
+This efficient implementation leaves **94% of Flash** and **92% of RAM** available for additional features.
 
 ## Video Demonstration
+
+You can see the HAL-based version demo in the [original project](https://github.com/rubin-khadka/STM32_Digital_Thermometer#video-demonstrations).
 
 ## Quick Start
 ### Prerequisites
@@ -93,13 +106,16 @@ git clone https://github.com/rubin-khadka/STM32_Digital_Thermometer_BareMetal
     - Flash: `F8` (if using ST-Link)
     - Or `Debug` → `Start/Stop Debug Session`
 
+## Resources
+- [STM32F103 Datasheet](https://www.st.com/resource/en/datasheet/stm32f103c8.pdf)
+- [74HC595 Shift Register Datasheet](https://www.ti.com/lit/ds/symlink/sn74hc595.pdf?spm=a2ty_o01.29997173.0.0.16bf5171zm4QVo&file=sn74hc595.pdf)
+- [LM35 Temperature Sensor Datasheet](https://www.ti.com/lit/ds/symlink/lm35.pdf?spm=a2ty_o01.29997173.0.0.16bf5171zm4QVo&file=lm35.pdf)
+
 ## What This Project Demonstrates
 - Complete register-level STM32 programming without HAL dependencies
 - Interrupt-driven architecture for real-time responsiveness
 - Efficient resource utilization (58% smaller than HAL equivalent)
-- Dual-mode timer design for flexible timing requirements
 - SPI communication with daisy-chained shift registers
-- Proper embedded documentation following industry practices
 
 ## Project Status
 - Status: Complete
